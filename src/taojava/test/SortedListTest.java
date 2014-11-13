@@ -110,6 +110,64 @@ public class SortedListTest
   {
     assertFalse(strings.contains("hello"));
   } // emptyTest()
+  /**
+   * test to see how list handles multiples. As i chose in Skiplist to not allow multiples
+   * I set that to true 
+   */
+  @Test
+  public void multiplesTest(){
+    strings.add("hello");
+    strings.add("hello");
+    assertEquals(1, strings.length());
+  }
+  /**
+   * Test to see if very basic indexing works
+   */
+  @Test
+  public void indexTest(){
+    assertEquals("hello", strings.get(0));
+  }
+  /**
+   * Test to see how list removes 
+   */
+  @Test
+  public void multRemoveTest(){
+    strings.remove("hello");
+    assertEquals(0, strings.length());
+  }
+  /**
+   * Slightly less basic indexing test
+   */
+  @Test
+  public void indexTestMore(){
+    strings.add("yo");
+    strings.add("dog");
+    strings.add("cat");
+    assertEquals("dog", strings.get(1));
+    SortedListTest.dump(strings);
+  }
+  /**
+   * Test if length works
+   */
+  @Test
+  public void lengthTest(){
+    for (int i = 0; i < 1000; i++){
+      ints.add(i);
+    }
+    assertEquals(1000, ints.length());
+  }
+  /**
+   * Test if length works after remove
+   */
+  @Test
+  public void lengthTestRem(){
+    for(int i = 0; i < 100; i++){
+      ints.remove(i);
+    }
+    assertEquals(900, ints.length());
+    SortedListTest.dump(ints);
+  }
+
 
   // +-----------------+-------------------------------------------------
   // | RandomizedTests |
